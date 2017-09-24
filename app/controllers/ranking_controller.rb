@@ -36,6 +36,7 @@ class RankingController < ApplicationController
           current.rank = current.rank - 1
           upper.save!
           current.save!
+          upvote(girl_id)
 
         elsif direction == "down"
           # swap with lower ranker
@@ -44,6 +45,7 @@ class RankingController < ApplicationController
           current.rank = current.rank + 1
           lower.save!
           current.save!
+          downvote(girl_id)
 
         end
 
@@ -56,4 +58,22 @@ class RankingController < ApplicationController
 
   def view
   end
+
+
+  private
+
+    def upvote(id)
+      @girl = Girl.find(id)
+      @girl.upvote_count = @girl.upvote_count.to_i + 1
+      puts @girl
+      @girl.save
+    end
+
+    def downvote(id)
+      @girl = Girl.find(id)
+      @girl.downvote_count = @girl.downvote_count.to_i + 1
+      puts @girl
+      @girl.save
+    end
+
 end
