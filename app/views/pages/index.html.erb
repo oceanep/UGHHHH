@@ -6,4 +6,6 @@
 <% end %>
 
 <p> Best girls are: </p>
-<p> <%= @highest_ranking_girl %> </p>
+<p> <%= @ranked_girls.each do |girl| %> </p>
+			<%= girl.name %> </b>
+		<% end -%>

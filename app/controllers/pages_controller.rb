@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def index
-    @highest_ranking_girl = Girl.vote_count
+    @ranked_girls = Girl.vote_count.tap
   end
 end

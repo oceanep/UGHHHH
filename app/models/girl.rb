@@ -17,7 +17,7 @@ class Girl < ApplicationRecord
 	end
 
 	def Girl.vote_count
-		Girl.find_by_sql ['SELECT id, upvote_count, downvote_count,
+		Girl.find_by_sql ['SELECT id, name, upvote_count, downvote_count,
 				((upvote_count + 1.9208) / (upvote_count + downvote_count) -
 				1.96 * SQRT((upvote_count * downvote_count) / (upvote_count + downvote_count) + 0.9604) /
 				(upvote_count + downvote_count)) / (1 + 3.8416 / (upvote_count + downvote_count))
